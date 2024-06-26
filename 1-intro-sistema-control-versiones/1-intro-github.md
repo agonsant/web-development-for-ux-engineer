@@ -36,7 +36,7 @@ Github permite crear un repositorio con el nombre de nuestro usuario y un archiv
 Para ello, vamos a seguir los siguientes pasos:
 
 1. Crear un repositorio con el nombre de nuestro usuario como hicimos en el apartado anterior en Github.
-2. Antes de poder clonar el repositorio en nuestro ordenador, debemos configurar una `"Password para repositorios"` que se llama `Personal Access Token`. En este segundo paso vamos a crear un token de acceso personal para poder clonar el repositorio en nuestro ordenador, siguiendo los [siguientes pasos](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+2. Antes de poder clonar el repositorio en nuestro ordenador, debemos configurar una `"Password para repositorios"` que se llama `Personal Access Token`. Vamos a crear este `token` para poder clonar el repositorio en nuestro ordenador, siguiendo los [siguientes pasos](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
 > [!WARNING]
 > Guarda el token en un lugar seguro, ya que no podrás verlo de nuevo. Igualmente si lo pierdes, puedes revocarlo y crear uno nuevo.
@@ -55,7 +55,7 @@ Soy un@ bebeloper 🤠 de software que le gusta aprender cosas nuevas y comparti
 ```
 
 > [!TIP]
-> Puedes usar la [chuleta de markdown](https://www.markdownguide.org/cheat-sheet/) para dar formato al texto y la de [emojis](https://www.webfx.com/tools/emoji-cheat-sheet/) para añadirlos a tu.
+> Puedes usar la [chuleta de markdown](https://www.markdownguide.org/cheat-sheet/) para dar formato al texto y/o la de [emojis](https://www.webfx.com/tools/emoji-cheat-sheet/) para darle un toque más personal a tu perfil.
 
 5. Una vez que hayamos escrito el contenido, guardamos el archivo y podemos subir nuestros cambios a Github para verlos. Para ello hacemos:
 
@@ -72,7 +72,7 @@ Este comando guarda los cambios en el `repositorio local` con un mensaje descrip
 Este comando sube los cambios al `repositorio remoto` en Github. Ahora si vamos a nuestro perfil de Github, veremos el archivo `README.md` con el contenido que hemos escrito.
 
 > [!NOTE]
-> El comando git push -U origin main es la primera vez que lo hacemos. A partir de esos primeros cambios, podemos hacer `git push` y se subirán los cambios al repositorio remoto.
+> El comando `git push -U origin main` sólo lo usaremos cuando un repositorio esté vacío. A partir de este primer cambio, podemos hacer `git push`, sin `-U origin main` y se subirán los cambios al repositorio remoto.
 
 ## Mejora tu perfil de Github
 
