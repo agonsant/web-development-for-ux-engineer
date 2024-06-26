@@ -82,7 +82,7 @@ Para ello podemos ir añadiendo más información en el archivo `README.md` que 
 
 Para subir los cambios, es importante que lo vayamos haciendo por secciones y **no todo de golpe**. Es importante que los cambios (o features como lo llamamos en desarrollo) sean pequeños y fáciles de revisar.
 
-> ![CAUTION]
+> [!CAUTION]
 > No subas información sensible a tu perfil de Github, como contraseñas, tokens, información personal delicada, etc.
 
 En el siguiente enlace tenéis muchos ejemplos de perfiles de Github que podéis tomar como referencia para mejorar vuestro perfil.
