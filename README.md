@@ -4,7 +4,8 @@ Repositorio de materiales para el curso de introducción al desarrollo web para 
 
 ## Contenido
 
-- [Introducción al desarrollo web](./1-intro-sistema-control-versiones/)
+1. [Sistemas de control de versiones](./1-intro-sistema-control-versiones/)
+2. [Introducción a la programación](./2-intro-programacion-js/)
 
 ## Instalación
 
