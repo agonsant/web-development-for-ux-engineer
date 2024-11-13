@@ -17,10 +17,10 @@ El diseño de la aplicación nos vendrá dado por el siguiente [archivo de Figma
 3. Crear una carpeta `css` y dentro de ella un archivo `styles.css`.
 4. Realizar la maquetación de la página principal.
 
-![home](./imgs/pokedex-list-example.png)
+   ![home](./imgs/pokedex-list-example.png)
 
-> [!NOTE]
-> En este primer ejercicio no es necesario utilizar JS. Solo HTML y CSS.
+   > [!NOTE]
+   > En este primer ejercicio no es necesario utilizar JS. Solo HTML y CSS.
 
 5. Despliega la página web en producción con [Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
 6. (Opcional) Realizar la maquetación de la página de detalle, eligiendo sólo 1 de los pokemon que hay en el diseño
