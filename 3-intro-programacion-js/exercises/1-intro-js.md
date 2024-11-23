@@ -27,7 +27,7 @@ Para mostrar mensajes al usuario se utilizará la función `render` vista en cla
 ## Ejercicios
 
 1. Request to strings to the user and print the length of concatenated result string.
-2. Request a number of degrees to the user and print the Farenheit degrees.
+2. Request a number of celsius degrees to the user and print the Farenheit degrees.
 3. Request two number (Weight and Height) and calculate the IMC of two variables and print if it is 'Obesidad de clase II'.
 4. A road has 90km/h speed limits. If the pollution is greater than 65% the speed limit must be 70km/h. Build an algorithm to print what is the road speed limits depending on the pollution.
 5. A traffic light can be 'green', 'flashing amber', 'amber' or 'red'. Build and algorithm that request the current traffic light and prints if a car must stop or can go on. If the user inputs a different value, print an error message.
