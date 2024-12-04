@@ -58,19 +58,51 @@ Para mostrar mensajes al usuario se utilizará la función `render` vista en cla
 
 12. Request a number, representing the height of the triangle and print the following pattern using HTML. The triangle must start moving from left to right until the end of the viewport width.
 
-```plaintext
-      *
-      **
-      ***
-      ****
-      *****
-      ****
-      ***
-      **
-      *
-```
+    ```plaintext
+          *
+          **
+          ***
+          ****
+          *****
+          ****
+          ***
+          **
+          *
+    ```
 
-To create the animation you can use `@keyframes` in CSS.
+    To create the animation you can use `@keyframes` in CSS.
+
+13. Request a string to the user representing the current time in format HH:mm:ss, ej: 14:33:25. Check if the structure is valid and create an object with the following structure:
+
+    ```javascript
+    {
+      hours: 14,
+      minutes: 33,
+      seconds: 25
+    }
+    ```
+
+    Print the object or the error message if the structure is not valid.
+
+    > [!NOTE]
+    > Check the [split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) function of the string to separate the hours, minutes and seconds in an Array.
+
+14. Create an object that represents a car and has properies such us `brand`, `model`, `plate`, `currentSpeed` and other property that represents if the car is on or off.
+
+- Create an array of cars with at least 4 cars
+- Prints in a `p` the speed of the third car
+- Prints in a `red` or `green` circle if there is any car on or off
+- Prints in a `p` the brand of the first car that is on or `No car is on` otherwise
+- Prints in a `p` the medium speed of all cars
+
+15. Create an array of `products` (id, nombre, tipo y precio), representing a shopping cart. Request the user to introduce the total payment amount and print the payment ticket. The ticket must contain the following information:
+
+- The list of products with the total price of each product
+- The total amount of the purchase
+- The user's total payment
+- The change to return to the user
+
+If the user's payment is less than the total amount of the purchase, print an error message.
 
 ## Entrega
 
