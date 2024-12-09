@@ -25,7 +25,7 @@ La aplicación constará de una página principal con un listado de pokemons y c
 
    ![home](./imgs/pokedex-list-example.png)
 
-   > [!NOTE]
-   > A la hora de enfocar la maquetación, mi consejo es que realicéis primero la estructura HTML y CSS de la funcionalidad que estás atacando y luego le añadamos el renderizado a través de las API's del DOM, con los datos del JS. Una vez que terminéis esa funcionalidad, lo repetiremos con las siguientes en bucle.
+> [!NOTE]
+> A la hora de enfocar la maquetación, mi consejo es que realicéis primero la estructura HTML y CSS de la funcionalidad que estás atacando y luego le añadamos el renderizado a través de las API's del DOM, con los datos del JS. Una vez que terminéis esa funcionalidad, lo repetiremos con las siguientes en bucle.
 
 7. Realizar la maquetación de la página de detalle, eligiendo **sólo 1** de los pokemon que hay en el diseño.
