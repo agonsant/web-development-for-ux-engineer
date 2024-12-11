@@ -10,6 +10,10 @@ Esta es un prueba para un cambio
 2. [Maquetando con HTML y CSS](./2-HTML-CSS/)
 3. [Introducción a la programación](./3-intro-programacion-js/)
 
+## Bootcamp FS Open
+
+- [FullStack Open](https://fullstackopen.com/es)
+
 ## Instalación
 
 Para instalar el proyecto en tu computadora, sigue estos pasos:
