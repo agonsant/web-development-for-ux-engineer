@@ -10,6 +10,25 @@
   background-color: blue;
 }
 
+/** EXERCISE 12 **/
+.exercise-12__triangle {
+  transform: translateX(0);
+  animation: linear;
+  animation-name: run;
+  animation-duration: 5s;
+}
+
+@keyframes run {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/** FIN EXERCISE 12 **/
+
 /** NOT PART OF THE EXERCISES **/
 
 * {

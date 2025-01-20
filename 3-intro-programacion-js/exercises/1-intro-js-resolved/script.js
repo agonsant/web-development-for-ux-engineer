@@ -252,6 +252,185 @@ function exerciseExecutor_7() {
 }
 
 /**
+ * 1. Solicitamos al usuario el números y comprobamos que es un número válido
+ * 2. Recorremos con un for desde 0 hasta el número y para cada número
+ *  a. Si la división de ese número entre dos tiene resto 0, imprimir 'even'
+ *  b. Sino, imprimir 'odd'
+ */
+function exerciseExecutor_8() {
+  const userInput = prompt("Introduzca un número positivo");
+  const maxNumber = Number.parseInt(userInput);
+
+  if (!Number.isNaN(maxNumber) && maxNumber >= 0) {
+    for (let i = 0; i <= maxNumber; i++) {
+      let result = `<p>${i} is `;
+      const isEven = i % 2 === 0;
+      if (isEven) {
+        result += "even";
+      } else {
+        result += "odd";
+      }
+      // result+= isEven ? 'even' : 'odd';  // Equivalente al if anterior
+      result += "</p>"; // concatenamos el cierre del párrafo
+      render(result);
+    }
+  } else {
+    render(`<p>${userInput} no es un número positivo</p>`);
+  }
+}
+
+/**
+ * 1. Solicitamos al usuario el números y comprobamos que es un número válido
+ * 2. Recorremos con un for desde 1 hasta el número y para cada número
+ *  a. Si el resto de la división entre 3 es 0, añadimos Fizz al resultado
+ *  b. Si el resto de la división entre 5 es 0, añadimos Buzz
+ */
+function exerciseExecutor_9() {
+  const userInput = prompt("Introduzca un número positivo");
+  const maxNumber = Number.parseInt(userInput);
+
+  if (!Number.isNaN(maxNumber) && maxNumber >= 1) {
+    for (let i = 0; i <= maxNumber; i++) {
+      let result = `<p>${i}: `;
+      const isMultipleOfThree = i % 3 === 0;
+      const isMultipleOfFive = i % 5 === 0;
+      // En este caso no habría else en ninguna de las dos, para que se concatene FizzBuzz si es múltiplo de los dos
+      if (isMultipleOfThree) {
+        result += "Fizz";
+      }
+
+      if (isMultipleOfFive) {
+        result += "Buzz";
+      }
+      result += "</p>";
+      render(result);
+    }
+  } else {
+    render(`<p>${userInput} no es un número positivo</p>`);
+  }
+}
+
+/**
+ * VERSION 1:
+ * 1. Solicitamos al usuario el números y comprobamos que es un número válido.
+ *    a. Si es un número negativo, dar la vuelta a su positivo convirtiéndolo en con el valor absoluto
+ * 2. Si dividimos entre 10, el resto de la división es el último número.
+ *    Podemos hacerlo repetidamente hasta que el resto sea cero, añadiendo el número al resultad
+ *
+ */
+function exerciseExecutor_10() {
+  const userInput = prompt("Introduzca un número");
+  const userNumber = Number.parseInt(userInput);
+  // Si introduce un valor negativo, lo convertimos en positivo con la funcíón de "valor absoluto" matemática
+  //  y le damos la vuelta
+  const numberToReverse = Math.abs(userNumber);
+
+  if (!Number.isNaN(numberToReverse)) {
+    let result = "";
+    for (
+      let currentNumber = numberToReverse; // defino dos variables. Una con el valor del usuario
+      currentNumber / 10 > 0; // hago el bucle hasta que el resto de la división de 0
+      currentNumber = Math.floor(currentNumber / 10) // En cada paso divido entre 10 para quitar el último número y me quedo solo con la parte entera (Math.floor)
+    ) {
+      const nextDigit = currentNumber % 10;
+      // En la primera iteración no sumarías decenas, en la seguna sumarías decenas, en la tercera centenas, ...
+      result += nextDigit;
+    }
+    render(`<p>${userInput} --> ${result}</p>`);
+  } else {
+    render(`<p>${userInput} no es un número válido</p>`);
+  }
+}
+
+/**
+ * VERSION 2:
+ * 1. Solicitamos al usuario el números y comprobamos que es un número válido.
+ *    a. Si es un número negativo, dar la vuelta a su positivo convirtiéndolo en con el valor absoluto
+ * 2. En este caso utilizamos las utilidades de la programación el objetivo sería el siguiente
+ *    a. Convertir a string el número validado
+ *    b. Partir el string en un array de caracteres
+ *    c. Dar la vuelta al array con su función reverse
+ *    d. El resultado ya sería el número dado vuelta
+ *
+ */
+function exerciseExecutor_10_EXTRA() {
+  const userInput = prompt("Introduzca un número");
+  const userNumber = Number.parseInt(userInput);
+  // Si introduce un valor negativo, lo convertimos en positivo con la funcíón de "valor absoluto" matemática
+  //  y le damos la vuelta
+  const numberToReverse = Math.abs(userNumber);
+
+  if (!Number.isNaN(numberToReverse)) {
+    const tempNumber = numberToReverse.toString(); // paso a string
+    const digits = tempNumber.split(""); // separo en un array de caracteres
+    const reversedDigits = digits.reverse(); // doy la vuelta al array
+    const result = Number.parseInt(reversedDigits.join("")); // vuelvo a juntar el array en un string y lo paso a número
+    render(`<p>${userInput} --> ${result}</p>`);
+  } else {
+    render(`<p>${userInput} no es un número válido</p>`);
+  }
+}
+
+/**
+ * 1. Solicitamos al usuario el DNI y separamos la letra del dígito comprobando que son válidos.
+ * 2. obtenemos el resto de su división por 23
+ * 3. Comprobamos en el array de letras de control que coincide con la letra obtenida
+ */
+function exerciseExecutor_11() {
+  const userInput = prompt("Introduzca un DNI") ?? ""; // inicializamos con string vacío, si el usuario no introduce nada
+  const userInputSanitized = userInput.trim().replaceAll("-", ""); // eliminamos espacios y guiones
+  const dniNumber = userInputSanitized.slice(0, -1); // cogemos todos los caracteres menos el último
+  const dniLetter = userInputSanitized.slice(-1).toUpperCase(); // cogemos el último caracter y lo pasamos a mayúsculas
+  const dniNumberParsed = Number.parseInt(dniNumber); // convertimos el número a entero
+
+  if (!Number.isNaN(dniNumberParsed)) {
+    const controlLetter = "TRWAGMYFPDXBNJZSQVHLCKE"; // cada posición del string (que funciona como una lista de caracteres) es un número que coincide con el digito de control
+    const controlLetterIndex = dniNumberParsed % 23; // obtenemos el resto de la división por 23
+    const isValidDNI = controlLetter[controlLetterIndex] === dniLetter; // comprobamos si la letra coincide con la obtenida
+    render(`<p>${userInput} valided: ${isValidDNI}</p>`);
+  } else {
+    render(`<p>${userInput} no es un DNI válido</p>`);
+  }
+}
+
+/**
+ * 1. Pedimos el height y calidamos que sea un número positivo.
+ * 2. Recorremos incrementalmente desde 1 hasta el height y para cada número, generando un p en cada vuelta i número de asteriscos
+ * 3. Recorremos decrementalmente desde height-1 hasta 0 y para cada número, generando un p en cada vuelta i número de asteriscos
+ * 4. renderizar el triángulo en el DOM dentro de un div para lanzar la animación. Ver archivo CSS
+ */
+function exerciseExecutor_12() {
+  const userInput = prompt("Introduzca un número positivo");
+  const triangleHeight = Number.parseInt(userInput);
+
+  if (!Number.isNaN(triangleHeight) && triangleHeight >= 1) {
+    let triangleDOM = "";
+    // recorremos la parte creciente del triángulo
+    for (let i = 1; i <= triangleHeight; i++) {
+      let asterics = "<p>";
+      // REPETIMOS i VECES sumando un * en cada vuelta
+      for (let j = 1; j <= i; j++) {
+        asterics += "*";
+      }
+      asterics += "</p>";
+      // const asterics = '<p>' + "*".repeat(i) + '</p>'; // Otra forma de hacerlo usando funciones de strings
+      triangleDOM += asterics;
+    }
+    // recorremos la parte de-creciente del triángulo
+    for (let i = triangleHeight - 1; i > 0; i--) {
+      // en este caso lo hacemos de la segunda forma para mostrar otra forma de hacerlo
+      const asterics = "<p>" + "*".repeat(i) + "</p>";
+      triangleDOM += asterics;
+    }
+
+    // una vez que tenemos renderizado el triángulo, añadimos al DOM el contenedor para iniciar la animación
+    render(`<div class="exercise-12__triangle">${triangleDOM}</div>`);
+  } else {
+    render(`<p>${userInput} no es un DNI válido</p>`);
+  }
+}
+
+/**
  * CODE NOT FOR THE EXERCISES. ITS FOR EXERCISE SELECTOR FORM
  */
 
