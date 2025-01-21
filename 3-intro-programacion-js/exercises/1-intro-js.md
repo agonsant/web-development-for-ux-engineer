@@ -93,7 +93,7 @@ Para mostrar mensajes al usuario se utilizará la función `render` vista en cla
 - Prints in a `p` the speed of the third car
 - Prints in a `red` or `green` circle if there is any car on or off
 - Prints in a `p` the brand of the first car that is on or `No car is on` otherwise
-- Prints in a `p` the medium speed of all cars
+- Prints in a `p` the average speed of all cars
 
 15. Create an array of `products` (id, nombre, tipo y precio), representing a shopping cart. Request the user to introduce the total payment amount and print the payment ticket. The ticket must contain the following information:
 

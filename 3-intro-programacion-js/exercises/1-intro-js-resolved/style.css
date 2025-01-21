@@ -29,6 +29,25 @@
 
 /** FIN EXERCISE 12 **/
 
+/** EXERCISE 14 **/
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+.circle--off {
+  background-color: #860505;
+}
+
+.circle--on {
+  background-color: #05a505;
+}
+
+/** FIN EXERCISE 14 **/
+
 /** NOT PART OF THE EXERCISES **/
 
 * {

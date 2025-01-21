@@ -431,6 +431,157 @@ function exerciseExecutor_12() {
 }
 
 /**
+ * 1. Solicitamos al usuario la hora actual y comprobamos que sea un formato válido
+ *    a. Dividimos el string por los dos puntos y comprobamos que haya 3 partes
+ *    b. Cada parte tiene que ser un número y estar en el rango correcto
+ * 2. Si las comprobaciones son correctas, generamos el objeto y pintamos cada una de sus propiedades
+ * 2. Si no debemos mostrar al usuario un error en el formato
+ *
+ */
+function exerciseExecutor_13() {
+  const userInput = prompt("Introduzca la hora actual (HH:mm:ss)") ?? ""; // inicializamos con string vacío, si el usuario no introduce nada
+  const currentTimeFormatter = userInput.trim().split(":"); // eliminamos espacios y dividimos por los dos puntos
+  const currentTime = {
+    // generamos el objeto con la información separada. Split nos devuelve un array con los elementos partidos en cada posición
+    hours: Number.parseInt(currentTimeFormatter[0]),
+    minutes: Number.parseInt(currentTimeFormatter[1]),
+    seconds: Number.parseInt(currentTimeFormatter[2]),
+  };
+  const isValidLengthTimeFormat = currentTimeFormatter.length === 3; // comprobamos que haya 3 partes
+  const isValidHours = currentTime.hours >= 0 && currentTime.hours <= 23; // comprobamos que las horas estén en el rango correcto
+  const isValidMinutes = currentTime.minutes >= 0 && currentTime.minutes <= 59; // comprobamos que los minutos estén en el rango correcto
+  const isValidSeconds = currentTime.seconds >= 0 && currentTime.seconds <= 59; // comprobamos que los segundos estén en el rango correcto
+  // Las últimas 4 validaciones se podrían sustituir usando REGEX de la siguiente manera:
+  // const isValidTime = /^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/.test(userInput)
+
+  if (
+    isValidLengthTimeFormat &&
+    isValidHours &&
+    isValidMinutes &&
+    isValidSeconds
+  ) {
+    render(
+      `<p>Horas: ${currentTime.hours}, Minutos: ${currentTime.minutes}, Segundos: ${currentTime.seconds} </p>`
+    );
+  } else {
+    render(`<p>${userInput} no es un estructura de hora válida (HH:mm:ss)</p>`);
+  }
+}
+
+function exerciseExecutor_14() {
+  // creamos los 4 coches, en este caso a mano
+  const hondaCRV = {
+    brand: "Honda",
+    model: "CRV",
+    plate: "1234ABC",
+    currentSpeed: 0,
+    isOn: false,
+  };
+  const seatLeon = {
+    brand: "Seat",
+    model: "León FR",
+    plate: "1235ABC",
+    currentSpeed: 160,
+    isOn: true,
+  };
+
+  const citroenC4 = {
+    brand: "Citroen",
+    model: "C4 VTS",
+    plate: "1236ABC",
+    currentSpeed: 12,
+    isOn: true,
+  };
+
+  const ferrariF40 = {
+    brand: "Ferrari",
+    model: "F40",
+    plate: "1237ABC",
+    currentSpeed: 350,
+    isOn: true,
+  };
+
+  const cars = [hondaCRV, seatLeon, citroenC4, ferrariF40]; // creamos el array con los coches
+
+  // recorremos el array de coches y guardamos los coches necesarios en variables
+
+  let isSomeCarOn = false;
+  let totalSpeeds = 0;
+  let firstCarOn = null;
+  for (let i = 0; i < cars.length; i++) {
+    if (cars[i].isOn) {
+      // si un coche está encendido, actualizamos la variable a true
+      isSomeCarOn = true;
+    }
+
+    if (firstCarOn === null && cars[i].isOn) {
+      // si no había coche encendido y encontramos uno, lo guardamos
+      firstCarOn = cars[i];
+    }
+
+    totalSpeeds += cars[i].currentSpeed;
+  }
+  const thirdCardSpeed = cars[2].currentSpeed;
+  const totalAverageSpeed = totalSpeeds / cars.length;
+  // aunque el uso del for como estructura de repetición es correcto, JS y otros lenguajes tienen metodos en los arrays que nos ayudan a recorrerlo y evitan los for, que son menos legibles y más propensos a errores
+  // El cambio quedaría así, sustituyendo desde la linea 507 (let isSomeCarOn = false;) hasta la 524 (const totalAverageSpeed = totalSpeeds / cars.length;)
+  /**
+   * const thirdCardSpeed = cars[2].currentSpeed;
+   * const isSomeCarOn = cars.some((car) => car.isOn)
+   * const firstCarOn = cars.find((car) => car.isOn)
+   * const totalSpeeds = cars.reduce((acc, car) => acc + car.currentSpeed, 0)/cars.length
+   */
+
+  render(`
+    <p>Velocidad del tercer coche: ${thirdCardSpeed}</p>
+    <div class="circle ${isSomeCarOn ? "circle--on" : "circle--off"}"></div>
+    <p>Marca del primer coche encendido: ${
+      firstCarOn?.brand ?? "No car is on"
+    }</p>
+    <p>Velocidad media de los coches: ${totalAverageSpeed} km/h</p>
+  `);
+  // NOTE: esta expresion `firstCarOn?.brand ?? 'No car is on'` es una forma de hacer un if/else corto. Si no hay primer coche encendido, se mostrará el mensaje 'No car is on'
+  // firstCarOn?.brand => Esta técnica se llama Optional Chaining y es una forma de acceder a propiedades de un objeto sin que se rompa el código si el objeto no existe
+  // ?? => es el operador de nullish coalescing que devuelve el primer valor que no sea null o undefined. Si el primer valor es null o undefined, devuelve el segundo valor
+}
+
+function exerciseExecutor_15() {
+  const products = [
+    // Creamos el array de productos en linea
+    { id: 1, name: "Producto 1", type: "Tipo A", price: 10 },
+    { id: 2, name: "Producto 2", type: "Tipo B", price: 20 },
+    { id: 3, name: "Producto 3", type: "Tipo A", price: 15 },
+    { id: 4, name: "Producto 4", type: "Tipo C", price: 25 },
+  ];
+
+  const userPayment = parseFloat(prompt("Introduzca el monto total de pago"));
+
+  const totalAmount = products.reduce((acc, product) => acc + product.price, 0); // utilizamos la funcion de los arrays 'reduce' para acumular la suma de todos los precios
+  let ticketHTML = `<h2>Ticket de Compra</h2>
+                <ul>
+               `;
+  // Recorremos todos los productos utilizando la funcion ForEach, generando un li por cada producto
+  products.forEach(
+    (product) =>
+      (ticketHTML += `<li>${product.name} * ${product.type} * ${product.price}</li>`)
+  );
+
+  ticketHTML += `</ul>
+                 <p>Total de la compra: $${totalAmount}</p>
+                `;
+  ticketHTML += `<p>Pago del usuario: $${userPayment}</p>`;
+
+  if (userPayment >= totalAmount) {
+    const change = userPayment - totalAmount;
+    ticketHTML += `<p>Cambio a devolver: $${change}</p>`;
+  } else {
+    ticketHTML += `<p>Error: El pago del usuario es insuficiente.</p>`;
+  }
+
+  render(ticketHTML); // pintamos el ticket que hemos ido construyendo
+}
+
+/**
  * CODE NOT FOR THE EXERCISES. ITS FOR EXERCISE SELECTOR FORM
  */
 
